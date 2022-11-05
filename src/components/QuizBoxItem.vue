@@ -47,7 +47,7 @@ export default defineComponent({
     height: 30px;
     background-color: #A5F12B;
     animation: panning 5s linear infinite;
-    @apply rounded-full flex justify-center items-center text-black;
+    @apply rounded-full flex justify-center items-center text-black border border-black;
   }
 }
 </style>

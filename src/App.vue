@@ -44,9 +44,7 @@ div.quiz-wrapper
     @apply relative;
   }
 
-  .quiz-box-item {
-    // display: unset;
-  }
+  .quiz-box-item {}
   .quiz-box-item__ball {
     @apply absolute z-20 animate-none;
     animation: panningToRB 2s ease-in-out infinite;

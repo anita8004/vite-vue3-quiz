@@ -1,16 +1,60 @@
-# Vue 3 + TypeScript + Vite
+# Quiz
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## 考試題目
+![alt quiz1](https://i.imgur.com/qzrDvs4.gif)
 
-## Recommended IDE Setup
+## 加分題
+![alt quiz1](https://i.imgur.com/koc5JSp.gif)
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+![alt quiz1](https://i.imgur.com/qHPjBH3.gif)
 
-## Type Support For `.vue` Imports in TS
+---
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+## 使用技術
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+- vue3
+- vite
+- typescript
+- tailwind
+- scss
+- pug
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+---
+
+## 總結
+> 遇到的問題或是困難以及學到了什麼?
+
+### 1. width:min-content
+九宮格的父元素設定完grid之後，我發現父元素的寬度比子元素寬，因為我想在父元素設置overflow:hidden，所以我必須想辦法讓父元素和子元素的寬度一致。
+
+老實說，過去我只做過撐開子元素使其與父元素同寬的案例，這是第一次碰到反過來的情況。
+
+還好平時就會關注新的css用法，一下就讓我想到width:min-content這個方法了！
+
+
+### 2. stacking context
+在格子上設置完opacity的閃爍功能後，沒想到球的隱藏跟顯示竟也一起完成了，本來以為需要另外設定的說XD 
+
+我發現將格子設為opacity:1的時候，格子會在球的底下；將格子設為opacity:0.99的時候，反而是球會在格子底下！ 
+
+這到底是為什麼呢?
+
+因為添加小於1的opacity會讓元素的堆疊層級變高，導致球在格子底下
+
+參考文章：
+[什么是层叠上下文？如何形层叠上下文？层叠顺序是怎样的？](https://www.cnblogs.com/leftJS/p/11063683.html)
+
+
+### 3.尚未解答的疑問
+
+在範例二中，我在球上設置了index:20，拉高球的堆疊層級，使其不會被opacity小於1的格子覆蓋
+
+但在範例3中，在球上設置了position: absolute後，反而讓球又重新被opacity小於1的格子覆蓋。
+
+或許由此可知，position的層級小於opacity小於1的層級？
+
+但如果上面結論成立的話，為什麼只有3號球會被格子覆蓋，其他的球還在格子上方呢？
+
+我不知道這是什麼原理，還是只是視覺上的錯覺呢？
+
+如果有高手知道答案，麻煩指教，感恩不盡！
