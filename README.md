@@ -10,6 +10,22 @@
 
 ---
 
+## 啟動此專案
+
+```
+yarn install
+yarn dev
+```
+
+or
+
+```
+npm install
+npm run dev
+```
+
+---
+
 ## 使用技術
 
 - vue3
