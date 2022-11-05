@@ -1,31 +1,73 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import QuizBox from "./components/QuizBox.vue";
 </script>
 
-<template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+<template lang="pug">
+div.quiz-wrapper
+  QuizBox(
+    title="Quiz 1"
+    className="quiz1"
+  )
+  QuizBox(
+    title="Quiz 2"
+    className="quiz2"
+  )
+  QuizBox(
+    title="Quiz 3"
+    className="quiz3"
+  )
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+<style scoped lang="scss">
+.quiz-wrapper {
+  @apply p-10;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+:deep(.quiz2) {
+  .quiz-box-item__ball {
+    @apply relative z-20;
+  }
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+@keyframes panningToRB {
+  0% {}
+  100% {
+    right: 0;
+    bottom: 0;
+  }
 }
+
+:deep(.quiz3) {
+  .quiz-box__content {
+    @apply relative;
+  }
+
+  .quiz-box-item {
+    // display: unset;
+  }
+  .quiz-box-item__ball {
+    @apply absolute z-20 animate-none;
+    animation: panningToRB 2s ease-in-out infinite;
+  }
+
+  .quiz-box-item-1 .quiz-box-item__ball {
+    right: calc(432px + 100px - 15px);
+    bottom: calc(232px + 50px - 15px);
+  }
+  .quiz-box-item-3 .quiz-box-item__ball {
+    right: calc(100px - 15px);
+    bottom: calc(232px + 50px - 15px);
+  }
+  .quiz-box-item-7 .quiz-box-item__ball {
+    right: calc(432px + 100px - 15px);
+    bottom: calc(50px - 15px);
+  }
+  .quiz-box-item-9 .quiz-box-item__ball {
+    right: calc(100px - 15px);
+    bottom: calc(50px - 15px);
+  }
+}
+
 </style>
